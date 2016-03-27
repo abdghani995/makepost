@@ -1,0 +1,109 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF;
+	font-size: 13px;
+	text-align: justify;
+	background:url(../images/metal-wallpaper-6903-7297-hd-wallpapers.jpg);
+}
+
+
+#header {
+	width: 800px;
+	height: 300px;
+	margin: 0 auto;
+	}
+
+
+#header p {
+	margin-top: -20px;
+	padding: 0 0 0 30px;
+	font-size: 24px;
+	font-weight: normal;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #FFFFFF;
+	text-transform: lowercase;
+}
+
+#header a {
+	text-decoration: none;
+	color: #F79F1A;
+}
+
+
+#footer {
+	width: 800px;
+	margin: 0 auto;
+	height: 50px;
+	text-align: center;
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #48AB07;
+	background: url(images/img01.jpg) no-repeat left top;
+	margin-bottom: 27px;
+}
+
+#footer p {
+	padding-top: 15px;
+}
+
+#footer p a {
+	color: #69B536;
+}
+#ppic{
+	position:absolute;
+	height:504px;
+	width:560px;
+	left: 380px;
+	top: 114px;
+	background-color:#000000;
+}
+#change{
+	position:absolute;
+	height:20px;
+	width:139px;
+	left: 40px;
+	top: 257px;
+}
+#pic{
+	position:absolute;
+	height:531px;
+	width:557px;
+	left: 14px;
+	top: 15px;
+}
+#f1{
+	position:absolute;
+	left: 495px;
+	top: 630px;
+	width: 402px;
+	height: 93px;
+}
+#header h1{
+color:#CCCCCC;
+}
+#picsubmit{
+	position:absolute;
+	left: 177px;
+	top: 46px;
+	height:30PX;
+	width:80px;
+	background-color:#000099;
+	color:#CCCCCC;
+}
+#choose{
+	color:#999999;
+	background-color:#000099;
+	position:absolute;
+	left: 35px;
+	top: 17px;
+}
+#back{
+	position:absolute;
+	height:34px;
+	width:66px;
+	left: 1135px;
+	top: 15px;
+	color:#999999;
+	background-color:#000099;
+}

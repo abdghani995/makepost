@@ -1,0 +1,199 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<script>
+	var x2,x1,x;
+	var indexyear,setleap=0;
+	var monthname=['month','JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+	var mondaylen=['','31','28','31','30','31','30','31','31','30','31','30','31'];	
+	var monbeg=['',indexyear,];	
+			function setmonth()
+					{	if(setleap==1)
+							{window.mondaylen[2]='29';
+							}
+						else
+							{
+							window.mondaylen[2]='28';
+							}
+						while(monbeg.length > 0) {
+    											monbeg.pop();
+												}
+							monbeg.push('');
+							monbeg.push(indexyear);
+						for(x=1;x<12;x++)
+						{	
+							x2=parseInt(monbeg[x])+parseInt(mondaylen[x]);
+							x1=parseInt(mod7(x2));
+							monbeg.push(x1);
+						}
+					}
+			function year()
+					{	var j=0;
+						var s="<select name='mon'  onchange='setyearindex(this.value);month()'>";
+						for(var i=0;i<=99;i++)
+							{	if(j<10)
+								j='0'+j;
+								s+="<option value="+(i)+">20"+j+"</option>";
+								j++;
+							}
+						s+="<option value="+100+">2"+j+"</option>";
+						s+="</select>";
+						document.getElementById("selectyear").innerHTML=s;
+					}
+			function setyearindex(val)
+				{
+					var a=[6,1,2,3,4,6,0,1,2,4,5,6,0,2,3,4,5,0,1,2,3,5,6,0,1,3,4,5,6,1,2,3,4,6,0,1,2,4,5,6,0,2,3,4,5,0,1,2,3,5,6,0,1,3,4,5,6,1,2,3,4,6,0,1,2,4,5,6,0,2,3,4,5,0,1,2,3,5,6,0,1,3,4,5,6,1,2,3,4,6,0,1,2,4,5,6,0,2,3,4,5];
+					window.indexyear=a[val];
+					setmonth();
+					
+					if((val%4)==0 &&val!=100)
+						window.setleap=1;
+					else
+						window.setleap=0;
+				}
+			function month()
+				{
+					var s="<select name='mon' onchange='setmonth(); monhead(this.value);monthdays(this.value)'>";
+						for(var i=0;i<=12;i++)
+							{
+								s+="<option value="+(i)+">"+monthname[i]+"</option>";
+							}
+						s+="</select>";
+						document.getElementById("selectmonth").innerHTML=s;
+				}
+			function monhead(val)
+				{	if (val!=0){
+					var s="<h1>"+monthname[val]+"</h1>";
+					
+					document.getElementById("monthhead").innerHTML=s;}
+				}
+			function monthdays(v)
+				{var i,j,k,l=1;
+					
+					
+					if(v!=0)
+					{
+					var s="<table border='1' width='100%' bordercolor='black' cellspacing='0' cellpadding='10' >";
+					s+="<tr><th>SUNDAY</th><th>MONDAY</th><th>TUESDAY</th><th>WEDNESDAY</th><th>THURSDAY</th><th>FRIDAY</th><th>SATURDAY</th></tr>"	;
+						
+						var rows=(mondaylen[v]/7);
+							for(j=0;j<rows+2;j++)
+								{
+								s+="<tr>";
+								   
+												if(j==0)
+												{
+													for(k=0;k<monbeg[v];k++)
+														{
+														if(j==0)
+																s+="<td>&nbsp;</td>";i++;
+														}
+													for(;k<7;k++)
+														
+														s+="<td>"+(l++)+"</td>";
+														
+												}
+												else
+												{		for(k=0;k<7;k++)
+														{if(l>mondaylen[v])
+																break;
+														
+														s+="<td>"+(l++)+"</td>";
+															
+														}
+												}
+										
+								s+="</tr>"
+								}
+					
+					s+="</table>";
+					window.setleap=0;
+				document.getElementById("monthtable").innerHTML=s;
+				
+						
+				}
+				else
+				{
+					document.getElementById("monthtable").innerHTML="<h1>PLEASE SELECT A MONTH</h1>";
+				}
+			
+			}
+			function mod7(v)
+				{
+				return v%7;
+				}
+	</script>
+	<style>
+			body{
+				background-color:#006699;
+				 background-image: url("images/img1.jpg");
+				 
+
+				}
+			#selectmonth{
+						position:absolute;
+						top:26px;
+						left:500px;
+						}
+			#selectyear{
+						position:absolute;
+						top:26px;
+						left:700px;
+						}
+			#f1{
+	position:absolute;
+	width: 902px;
+	height: 502px;
+	left: 261px;
+	top: 134px;
+	color:white;
+				}
+			.foot{
+			position:absolute;
+	width: 100%;
+	height: 118px;
+	left: 2px;
+	top:750px;
+	background-color: black;
+					}
+			.heading{
+	position:absolute;
+	width: 901px;
+	height: 69px;
+	left: 263px;
+	background-color: #663333;
+	top: 58px;
+					}
+	.style1 {color: #00FFFF}
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body onload ="month();year()">
+<form id="f1" name="f1" method="post" action="" align="center">
+  <table width="899" height="428" border="1" bgcolor="#999999">
+    <tr>
+      <td width="442" height="46"><h2>SELECT MONTH: </h2></td>
+      <td width="441"><div id="selectmonth"></div><div id="selectyear"><></td>
+    </tr>
+    <tr>
+      <td height="62" colspan="2"><div id="monthhead"></div></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div id="monthtable"></div></td>
+    </tr>
+  </table>
+</form>
+<div class="heading">
+  <h1 align="center" class="style1"><u>100 YEAR CALENDER </u></h1>
+</div>
+<div class="foot">
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p ><h5 align="right" textcolor="white"> <span class="style1"><marquee>@silveruser</marquee></span>r</h5>
+  </p>
+</div>
+</body>
+</html>
