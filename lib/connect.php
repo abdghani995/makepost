@@ -1,9 +1,9 @@
 <?php
 		 class connect{
 				private $db_name="chat";
-				private $db_host='localhost';
-				private $db_username='root';
-				private $db_password='';
+				private $db_host='182.50.133.84:3306';
+				private $db_username='chat';
+				private $db_password='qwerty123';
 				protected $con;
 				private $db;
 		function __construct()
